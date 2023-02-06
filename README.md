@@ -13,6 +13,8 @@ Install [Ros2 Humble](https://docs.ros.org/en/humble/Installation.html)
 
 Install [Gazebo Garden](https://gazebosim.org/docs/garden/install)
 
+Install [Cares Reinforcement Learning Package](https://github.com/UoA-CARES/cares_reinforcement_learning)
+
 The following instructions are taken from the [ros_gz README](https://github.com/gazebosim/ros_gz)
 
 1. Set Gazebo Version:
