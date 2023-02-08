@@ -74,19 +74,19 @@ The Environment generally follows the Open AI gym interface; with methods such a
 Observations in this environmnet is a **1D array** of *floats*; the *size* of the array is **8**. Look below:
 |Index in Array| Observation      | Observation Type |
 |----| ----------- | ----------- |
-|0| Car's x position      | float       |
-|1| Car's y position   | float    |
-|2| Car's z orientation   | float        |
-|3| Car's w orientation   | float        |
-|4| Goal's x position | float |
-|5| Goal's y position | float |
-|6| Car's linear velocity | float |
-|7| Car's angular velocity | float|
+|0| car x position      | float       |
+|1| car y position   | float    |
+|2| car z orientation   | float        |
+|3| car w orientation   | float        |
+|4| goal x position | float |
+|5| goal y position | float |
+|6| car linear velocity | float |
+|7| car angular velocity | float|
 
 ## Action
 Actions in this environment is a **1D array** of *floats*; the *size* of the array is 2.
 
 |Index in Array | Action | Type | Min | Max |
 |----|----|----|----|----|
-|0 | Car's Linear Velocity | float | 0 | 3 |
-|1 | Car's Angular Velocity | float | -1 | 1 |
+|0 | car linear velocity | float | 0 | 3 |
+|1 | car angular velocity | float | -1 | 1 |
