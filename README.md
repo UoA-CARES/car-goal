@@ -83,20 +83,6 @@ Observations in this environmnet is a **1D array** of *floats*; the *size* of th
 |6| Car's linear velocity | float |
 |7| Car's angular velocity | float|
 
-**Example:**
-```python
-observation = [
-  car_x_position, 
-  car_y_position, 
-  car_z_orientation, 
-  car_w_orientation, 
-  goal_x_position, 
-  goal_y_position, 
-  car_lin_velocity, 
-  car_ang_velocity
-  ]
-```
-
 ## Action
 Actions in this environment is a **1D array** of *floats*; the *size* of the array is 2.
 
