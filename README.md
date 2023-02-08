@@ -83,6 +83,8 @@ Observations in this environmnet is a **1D array** of *floats*; the *size* of th
 |6| car linear velocity | float |
 |7| car angular velocity | float|
 
+**Note:** Quaternion is used for orientation
+
 ## Action
 Actions in this environment is a **1D array** of *floats*; the *size* of the array is 2.
 
