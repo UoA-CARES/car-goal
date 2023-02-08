@@ -63,3 +63,44 @@ ros2 launch simulation simulation.launch.py
 If you would like to try out different RL algorithms/networks, edit `src/simulation/simulation/training.py`
 
 **Note** while editing this file, that the environment is a ros node, and thus can only be created after ros initialisation `rclpy.init()`
+
+# Environment Details
+The following contains details about the environment, such as the observation and action spaces as well as constraints
+
+## Interface
+The Environment generally follows the Open AI gym interface; with methods such as `reset` and `step`. For more details on this, read the [gym](https://www.gymlibrary.dev/) documentaion.
+
+## Observation
+Observations in this environmnet is a **1D array** of *floats*; the *size* of the array is **8**. Look below:
+|Index in Array| Observation      | Observation Type |
+|----| ----------- | ----------- |
+|0| Car's x position      | float       |
+|1| Car's y position   | float    |
+|2| Car's z orientation   | float        |
+|3| Car's w orientation   | float        |
+|4| Goal's x position | float |
+|5| Goal's y position | float |
+|6| Car's linear velocity | float |
+|7| Car's angular velocity | float|
+
+**Example:**
+```python
+observation = [
+  car_x_position, 
+  car_y_position, 
+  car_z_orientation, 
+  car_w_orientation, 
+  goal_x_position, 
+  goal_y_position, 
+  car_lin_velocity, 
+  car_ang_velocity
+  ]
+```
+
+## Action
+Actions in this environment is a **1D array** of *floats*; the *size* of the array is 2.
+
+|Index in Array | Action | Type | Min | Max |
+|----|----|----|----|----|
+|0 | Car's Linear Velocity | float | 0 | 3 |
+|1 | Car's Angular Velocity | float | -1 | 1 |
