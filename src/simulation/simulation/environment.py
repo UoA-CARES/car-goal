@@ -40,8 +40,8 @@ class Environment(Node):
 
         self.goal_position = np.random.uniform(0, 10, (2,))
 
-        self.obs = [0, 0, 0, 0, 0, 0]
-        self.last_obs = [0, 0, 0, 0, 0, 0]
+        self.obs = [0, 0, 0, 0, 0, 0, 0, 0]
+        self.last_obs = [0, 0, 0, 0, 0, 0, 0, 0]
         
         self.obs_future = Future() 
 
@@ -118,7 +118,7 @@ class Environment(Node):
         
         self.step_counter = 0
 
-        self.last_obs = [0, 0, 0, 0, 0, 0]
+        self.last_obs = [0, 0, 0, 0, 0, 0, 0, 0]
 
         return self.obs, self.get_info()
 
@@ -214,8 +214,9 @@ class Environment(Node):
         
     def pose_callback(self, msg):
         pos = msg.position 
+        ang = msg.orientation
 
-        self.obs_future.position = [pos.x, pos.y]
+        self.obs_future.position = [pos.x, pos.y, ang.z, ang.w]
         
         self.evaluate_future()
 
