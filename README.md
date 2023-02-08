@@ -15,7 +15,7 @@ Install [Gazebo Garden](https://gazebosim.org/docs/garden/install)
 
 Install [Cares Reinforcement Learning Package](https://github.com/UoA-CARES/cares_reinforcement_learning)
 
-The following instructions are taken from the [ros_gz README](https://github.com/gazebosim/ros_gz)
+The following instructions are taken from the [ros_gz](https://github.com/gazebosim/ros_gz) docs
 
 1. Set Gazebo Version:
 ```
@@ -27,11 +27,12 @@ export GZ_VERSION=garden
 # cd into workspace
 cd ~/car-goal
 rosdep install -r --from-paths src -i -y --rosdistro humble
+# Note: the keys for the latest gazebo packages – gz-transport12, gz_sim7 etc. – are not indexed by rosdep.
 ```
 
 3. Build Workspace
 ```
-# Source ROS distro's setup.bash
+# Source ROS distro's setup.bash. Hopefully this line is already in your .bashrc or equivalent.
 source /opt/ros/humble/setup.bash
 
 # Build and install into workspace
