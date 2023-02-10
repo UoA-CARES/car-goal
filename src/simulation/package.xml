@@ -16,7 +16,7 @@
 
   <depend>robot_description</depend>
   <depend>ros_gz_interfaces</depend>
-
+  <depend>cares_reinforcement_learning</depend>
   <export>
     <build_type>ament_python</build_type>
   </export>

@@ -380,7 +380,7 @@
         <wheel_separation>1.25</wheel_separation>
         <wheel_radius>0.3</wheel_radius>
         <min_velocity>-1</min_velocity>
-        <max_velocity>3</max_velocity>
+        <max_velocity>1</max_velocity>
         <min_acceleration>-3</min_acceleration>
         <max_acceleration>3</max_acceleration>
       </plugin>

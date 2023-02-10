@@ -110,9 +110,7 @@ class Environment(Node):
 
         self.send_reset_request()
 
-        time.sleep(1)
-
-        # rclpy.spin_once(self)
+        time.sleep(0.5)
 
         self.generate_goal()
         
@@ -151,7 +149,7 @@ class Environment(Node):
 
         delta_distance = old_distance - current_distance
 
-        reward = 0
+        reward = -0.5
 
         if current_distance < self.REWARD_RANGE:
             reward += 100
