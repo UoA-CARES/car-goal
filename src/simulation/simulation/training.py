@@ -9,8 +9,7 @@ import random
 import torch
 import numpy as np
 from cares_reinforcement_learning.networks import TD3
-from cares_reinforcement_learning.util import MemoryBuffer
-
+from cares_reinforcement_learning.util import MemoryBuffer, Plot
 
 if torch.cuda.is_available():
     DEVICE = torch.device('cuda')
@@ -67,10 +66,10 @@ def main():
 
     env.get_logger().info(f"Training Beginning")
     train(td3, memory)
-    
+
 
 def train(td3, memory: MemoryBuffer):
-    historical_reward = []
+    plot = Plot(plot_freq=100, checkpoint_freq=50)
 
     for episode in range(0, EPISODE_NUM):
 
@@ -103,8 +102,11 @@ def train(td3, memory: MemoryBuffer):
             if terminated or truncated:
                 break
 
-        historical_reward.append(episode_reward)
+        plot.post(episode_reward)
         env.get_logger().info(f"Episode: {episode} Reward: {episode_reward}")
+    
+    plot.save_plot('weekend_training')
+    plot.save_csv('weekend_training')
 
 
 
