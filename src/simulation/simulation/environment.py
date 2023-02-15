@@ -195,6 +195,8 @@ class Environment(Node):
 
         self.reset_request.world_control.reset.all= True
 
+        while not self.reset_client.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('service not available, waiting again...')
         
         self.reset_future = self.reset_client.call_async(self.reset_request)
         rclpy.spin_until_future_complete(self, self.reset_future)
