@@ -1,7 +1,8 @@
+
 import rclpy
 import os
 from rclpy.node import Node
-import subprocess
+from subprocess import Popen, PIPE
 import time 
 import numpy as np
 import random
@@ -77,10 +78,15 @@ class Environment(Node):
         y = str(y)
         z = str(z)
 
-        subprocess.Popen(
-                ['gz service -s /world/ackermann_steering/create --reqtype gz.msgs.EntityFactory --reptype gz.msgs.Boolean --timeout 1000 --req \'pose:{position: {x: ' + x + ', y: ' + y + ', z: ' + z + '}}, sdf_filename: \"' + sdf_path + '\", name: \"' + model_name + '\"\''],
-               shell=True
-               )
+        process = Popen(
+            ['gz service -s /world/ackermann_steering/create --reqtype gz.msgs.EntityFactory --reptype gz.msgs.Boolean --timeout 1000 --req \'pose:{position: {x: ' + x + ', y: ' + y + ', z: ' + z + '}}, sdf_filename: \"' + sdf_path + '\", name: \"' + model_name + '\"\''],
+            shell=True,
+            stdout=PIPE,
+            stderr=PIPE
+             )
+        stdout, stderr = process.communicate()
+
+        self.get_logger().info(f"Spawn Stdout: {stdout}, Stderr: {stderr}")
 
     def delete_entity(self, name):
 
@@ -90,7 +96,7 @@ class Environment(Node):
         #
         #   gz service -s world/ackermann_steering/remove --reqtype gz.msgs.Entity --reptype gz.msgs.Boolean --timeout 1000 --req 'type: 2, name: "vehicle_blue"'
 
-        subprocess.run(
+        Popen(
                 ['gz service -s world/ackermann_steering/remove --reqtype gz.msgs.Entity --reptype gz.msgs.Boolean --timeout 1000 --req \'' + 'type: 2, name: \"' + name + '\"\''],
                 shell=True
                 )

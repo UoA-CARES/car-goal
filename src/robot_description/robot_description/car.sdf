@@ -3,7 +3,6 @@
 <sdf version="1.6">
 	<model name='vehicle_blue'>
 	<pose>0 2 0.325 0 -0 0</pose>
-
       <link name='chassis'>
         <pose>-0.151427 -0 0.175 0 -0 0</pose>
         <inertial>
@@ -36,7 +35,38 @@
             </box>
           </geometry>
         </collision>
+        <sensor name='gpu_lidar' type='gpu_lidar'>"
+          <pose relative_to='lidar_frame'>0 0 0 0 0 0</pose>
+          <topic>lidar</topic>
+          <update_rate>10</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>640</samples>
+                <resolution>1</resolution>
+                <min_angle>-1.396263</min_angle>
+                <max_angle>1.396263</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>1</samples>
+                <resolution>0.01</resolution>
+                <min_angle>0</min_angle>
+                <max_angle>0</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.08</min>
+              <max>10.0</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+          <always_on>1</always_on>
+          <visualize>true</visualize>
+        </sensor>
       </link>
+ <frame name="lidar_frame" attached_to='chassis'>
+   <pose>0.8 0 0.3 0 0 0</pose>
+      </frame>
 
       <link name='front_left_wheel'>
         <pose>0.554283 0.625029 -0.025 -1.5707 0 0</pose>

@@ -25,7 +25,7 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(
             os.path.join(ros_gz_sim_pkg, 'launch', 'gz_sim.launch.py')),
         launch_arguments={
-            'gz_args': f"-r {robot_description_pkg}/world.sdf --render-engine ogre" # render-engine option to run on Linux ARM64
+            'gz_args': f"-r {robot_description_pkg}/world.sdf"  # render-engine option to run on Linux ARM64
         }.items(),
     )
     
