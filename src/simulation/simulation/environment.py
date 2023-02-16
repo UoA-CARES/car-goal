@@ -25,7 +25,7 @@ class Environment(Node):
             max_steps: the max number of steps before truncating episode
             reward_range: how close the car must be to the goal in order to recieve large reward (100)
         """
-       
+  
         self.robot_description_pkg = get_package_share_directory('robot_description')
 
         # Parameters
@@ -43,7 +43,7 @@ class Environment(Node):
         self.obs = [0, 0, 0, 0, 0, 0, 0, 0]
         self.last_obs = [0, 0, 0, 0, 0, 0, 0, 0]
         
-        self.obs_future = Future() 
+        self.obs_future = Future()
 
         # Publishers & Subscribers
 

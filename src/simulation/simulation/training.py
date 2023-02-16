@@ -29,14 +29,14 @@ CRITIC_LR = 1e-3
 EPISODE_NUM = 10_000
 BATCH_SIZE = 100
 
-MAX_ACTIONS = np.array([1, 1])
+MAX_ACTIONS = np.array([3, 1])
 MIN_ACTIONS = np.array([0, -1])
 
 OBSERVATION_SIZE = 8
 ACTION_NUM = 2
 
 rclpy.init()
-env = Environment(max_steps=20)
+env = Environment(max_steps=15)
 
 def main():
 
@@ -69,7 +69,7 @@ def main():
 
 
 def train(td3, memory: MemoryBuffer):
-    plot = Plot(plot_freq=100, checkpoint_freq=50)
+    plot = Plot(plot_freq=100, checkpoint_freq=20)
 
     for episode in range(0, EPISODE_NUM):
 
@@ -101,12 +101,13 @@ def train(td3, memory: MemoryBuffer):
 
             if terminated or truncated:
                 break
-
+        
         plot.post(episode_reward)
         env.get_logger().info(f"Episode: {episode} Reward: {episode_reward}")
     
-    plot.save_plot('weekend_training')
-    plot.save_csv('weekend_training')
+    td3.save_models('16-feb-training')
+    plot.save_plot('16-feb-training')
+    plot.save_csv('16-feb-training')
 
 
 
@@ -130,7 +131,7 @@ def fill_buffer(memory):
 
 def mapAction(tensor):
 
-    tensor[0] = (tensor[0] + 1 ) / 2 # Map between 0 and 1
+    tensor[0] = (tensor[0] + 1 ) / 2 * 3 # Map between 0 and 3
     # tensor[1] = tensor[1] - 0.5 # Map between -0.5 and 0.5
 
     return tensor
