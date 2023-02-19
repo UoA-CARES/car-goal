@@ -36,7 +36,7 @@ OBSERVATION_SIZE = 8
 ACTION_NUM = 2
 
 rclpy.init()
-env = Environment(max_steps=15)
+env = Environment(max_steps=50)
 
 def main():
 
@@ -105,9 +105,9 @@ def train(td3, memory: MemoryBuffer):
         plot.post(episode_reward)
         env.get_logger().info(f"Episode: {episode} Reward: {episode_reward}")
     
-    td3.save_models('16-feb-training')
-    plot.save_plot('16-feb-training')
-    plot.save_csv('16-feb-training')
+    td3.save_models('17-feb-training')
+    plot.save_plot('17-feb-training')
+    plot.save_csv('17-feb-training.csv')
 
 
 

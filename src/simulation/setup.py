@@ -25,7 +25,8 @@ setup(
     entry_points={
         'console_scripts': [
             'environment = simulation.environment:main',
-            'training = simulation.training:main'
+            'training = simulation.training:main',
+            'test_model = simulation.test_model:main'
         ],
     },
 )
